@@ -23,6 +23,14 @@ exports.welcome = function(request, response) {
     });
 }
 
+exports.css = function(request, response) {
+    fs.readFile("templates/style.min.css", function(err, css) {
+        response.writeHead(200, {"Content-Type": "text/css; charset=utf-8"});
+        response.write(css);
+        response.end();
+    })
+}
+
 exports.show = function(request, response) {
     fs.readFile("test.png", "binary", function(error, file) {
         response.writeHead(200, {"Content-Type": "image/png"});
